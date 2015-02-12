@@ -23,7 +23,7 @@ gulp.task('logTest', function (){
 ```
 
 ```js
-var casperJs = require('gulp-casperjs');
+var casperJs = require('gulp-casperjs-options');
 gulp.task('test', function () {
   gulp.src('Globs of test files')
     .pipe(casperJs()); //run casperjs test
@@ -31,7 +31,7 @@ gulp.task('test', function () {
 ```
 To change the command (default: `test`) use parameter `command`:
 ```js
-var casperJs = require('gulp-casperjs');
+var casperJs = require('gulp-casperjs-options');
 gulp.task('casperCmd', function () {
   gulp.src('test.js')
     .pipe(casperJs({command:''})); //run capserjs test.js
@@ -42,7 +42,7 @@ If command has value which cast to `false`, this parameter will be ignored.
 
 To hide output from CasperJS use parameter `outputLog`:
 ```js
-var casperJs = require('gulp-casperjs');
+var casperJs = require('gulp-casperjs-options');
 gulp.task('casperCmd', function () {
   gulp.src('test.js')
     .pipe(casperJs({outputLog: false})); //CasperJS output not show
