@@ -1,14 +1,26 @@
-# gulp-casperjs
+# gulp-casperjs-options
+## Forked from original [gulp-casperjs](https://github.com/NullRefExcep/gulp-casperjs) with minor updates
 
 A [gulp](https://github.com/gulpjs/gulp) plugin for running [CasperJS](https://github.com/n1k0/casperjs) scripts
 
 ## Install
 
 ```
-npm install --save-dev gulp-casperjs
+npm install --save-dev gulp-casperjs-options
 ```
 
 ## Usages
+
+To add logging output option:
+```js
+var casperJs = require('gulp-casperjs-options');
+gulp.task('logTest', function (){
+    gulp.src('test.js')
+        .pipe(casperjs({
+            xunit: 'log.xml'
+        }));
+});
+```
 
 ```js
 var casperJs = require('gulp-casperjs');

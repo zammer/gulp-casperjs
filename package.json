@@ -1,19 +1,19 @@
 {
-    "name": "gulp-casperjs",
-    "description": "Gulp plugin for running CasperJS scripts",
-    "version": "0.0.5",
+    "name": "gulp-casperjs-options",
+    "description": "Gulp plugin for running CasperJS scripts with options",
+    "version": "0.0.1",
     "main": "index.js",
     "dependencies": {
         "through2": "*",
         "gulp-util": "^3.0.1"
     },
     "author": {
-        "name": "Dmytro Karpovych",
-        "email": "ZAYEC77@gmail.com"
+        "name": "Matt Walker",
+        "email": "matt.walker73@gmail.com"
     },
     "repository": {
         "type": "git",
-        "url": "git://github.com/NullRefExcep/gulp-casperjs"
+        "url": "git://github.com/zammer/gulp-casperjs"
     },
     "license": "MIT",
     "keywords": [

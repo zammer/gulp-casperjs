@@ -3,14 +3,16 @@ var gutil = require('gulp-util');
 var spawn = require('child_process').spawn;
 var PluginError = gutil.PluginError;
 
-const PLUGIN_NAME = 'gulp-casper-js';
+const PLUGIN_NAME = 'gulp-casperjs-options';
 
 function casper(options) {
     options = options || {};
 
-    var cmd = (typeof options.command === 'undefined') ? 'test' : options.command;
+    if(options.xunit){
+        var xunit = '--xunit=' + options.xunit;
+    }
 
-    var outputLog = (typeof options.outputLog === 'boolean') ? options.outputLog : true;
+    var cmd = (typeof options.command === 'undefined') ? 'test' : options.command;
 
     var files = [];
 
@@ -37,14 +39,20 @@ function casper(options) {
     var end = function(cb) {
         cmd = cmd ? (Array.isArray(cmd) ? cmd : cmd.split(' ')) : [];
 
-        var casperChild = spawn('casperjs', cmd.concat(files));
+        //console.log(cmd.concat(files));
 
-        if (outputLog) 
-            casperChild.stdout.on('data', function(data) {
-                var msg = data.toString().slice(0, -1);
-                gutil.log(PLUGIN_NAME + ':', msg);
-            });
+        var tempArr = cmd.concat(files);
+
+        if(xunit) {
+            tempArr.push(xunit)
         }
+
+        var casperChild = spawn('casperjs', tempArr);
+
+        casperChild.stdout.on('data', function(data) {
+            var msg = data.toString().slice(0, -1);
+            gutil.log(PLUGIN_NAME + ':', msg);
+        });
 
         var self = this;
         casperChild.on('close', function(code) {
