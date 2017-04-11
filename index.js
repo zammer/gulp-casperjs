@@ -46,6 +46,10 @@ function casper(options) {
     if (options.nocolors) {
         args.push('--no-colors');
     }
+    
+    if (options.websecurity) {
+        args.push('--web-security=' + options.websecurity);
+    }
 
     var cmd = (typeof options.command === 'undefined') ? 'test' : options.command;
 
